@@ -1,8 +1,15 @@
-import time
-import random
+from fastapi import FastAPI
 
-while True:
-    print("Hello")
-    for i in range(5):
-        print(i)
-    time.sleep(15)
+app = FastAPI(docs_url="/")
+
+
+@app.get("/infer")
+async def infer(input_text: str):
+
+    arr = []
+    for i in range(1000000):
+        a = 10
+        if i%100==0:
+            arr.append(a)
+
+    return {"output": input_text}
